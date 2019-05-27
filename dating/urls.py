@@ -4,7 +4,7 @@ from . import views
 urlpatterns = [
     ## profiles
     path('profiles/create', views.ProfileCreateView.as_view(), name="profiles_create"),
-    path('profiles', views.ProfileListView.as_view(), name="profiles"),
+    path('profiles/list', views.ProfileListView.as_view(), name="profiles"),
 
     ## users
     path('users/create', views.UserCreateView.as_view(), name="users_create"),
