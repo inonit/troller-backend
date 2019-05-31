@@ -1,11 +1,21 @@
+from django.shortcuts import get_object_or_404
 from rest_framework import generics, mixins
 from rest_framework.response import Response
+from rest_framework import status
 from rest_framework.views import APIView
 from .models import Profile, Like, Message
 from .serializers import ProfileSerializer, LikeSerializer, MessageSerializer, UserSerializer
 
 # Create your views here.
 
+class ProfileView(generics.GenericAPIView):
+    serializer_class = ProfileSerializer
+    queryset = Profile.objects.all()
+    def get(self, request):
+        obj = get_object_or_404(Profile, user=self.request.user)
+        serializer = self.serializer_class(obj)
+
+        return Response(serializer.data)
 
 class ProfileCreateView(generics.CreateAPIView):
     serializer_class = ProfileSerializer

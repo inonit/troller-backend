@@ -19,6 +19,9 @@ class Profile(models.Model):
     image = models.ImageField()
     bio = models.TextField(blank=True)
 
+    def __str__(self):
+        return self.username
+
 class Like(models.Model):
     a = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name="like_a")
     b = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name="like_b")

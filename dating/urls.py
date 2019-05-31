@@ -9,6 +9,9 @@ urlpatterns = [
     ## users
     path('users/create', views.UserCreateView.as_view(), name="users_create"),
 
+    ## user
+    path('user/profile', views.ProfileView.as_view(), name="user_profile"),
+    
     ## likes
     path('likes/create', views.LikeCreateView.as_view()),
     path('likes/list', views.LikeListView.as_view()),
