@@ -18,14 +18,16 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
-from dating.urls import urlpatterns
+import chat.urls as chat_urls
+import dating.urls as dating_urls
 from rest_framework_jwt.views import ( obtain_jwt_token,
                                        refresh_jwt_token,
                                        verify_jwt_token )
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/', include(urlpatterns)),
+    path('api/dating/', include(dating_urls.urlpatterns)),
+    path('api/chat/', include(chat_urls.urlpatterns)),
     path('api/token-auth/', obtain_jwt_token),
     path('api/token-refresh/', refresh_jwt_token),
     path('api/token-verify/', verify_jwt_token),
